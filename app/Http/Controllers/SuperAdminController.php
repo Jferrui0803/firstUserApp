@@ -11,7 +11,7 @@ class SuperAdminController extends Controller
     public function home()
     {
         
-        $users = User::paginate(5);
+        $users = User::all();
 
         // Pasar los usuarios a la vista
         return view('superAdmin.index', compact('users'));

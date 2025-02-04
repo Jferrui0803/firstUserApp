@@ -3,12 +3,12 @@
 @section('content')
 <div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow-lg rounded-3">
-                <div class="card-header bg-dark text-white text-center">
-                    <h3 class="mb-0">My Information</h3>
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-dark text-white text-center py-3">
+                    <h3 class="mb-0 fw-bold">My Profile Information</h3>
                 </div>
-                <div class="card-body bg-light">
+                <div class="card-body bg-light px-4 py-5">
                     @if(session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
@@ -18,51 +18,38 @@
 
                     <form method="POST" action="{{ route('user.update') }}">
                         @csrf
-                        <!-- Nombre -->
+                        
                         <div class="mb-4">
-                            <label for="name" class="form-label fw-bold">Name * :</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $user->name }}" required>
+                            <label for="name" class="form-label text-dark fw-semibold">* Full Name</label>
+                            <input type="text" class="form-control form-control-lg shadow-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{ $user->name }}" required>
                             @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <!-- Correo Electrónico -->
-                        @if($user->role === 'superAdmin')
                         <div class="mb-4">
-                            <label for="email" class="form-label fw-bold">Email * :</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" readonly>
-                        </div>
-                        @else
-                        <div class="mb-4">
-                            <label for="email" class="form-label fw-bold">Email:</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $user->email) }}" required onblur="resetEmailField()">
+                            <label for="email" class="form-label text-dark fw-semibold">* Email Address</label>
+                            <input type="email" class="form-control form-control-lg shadow-sm @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $user->email) }}" required {{ $user->role === 'superAdmin' ? 'readonly' : '' }}>
                             @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        @endif
 
-                        <!-- Nueva Contraseña -->
                         <div class="mb-4">
-                            <label for="password" class="form-label fw-bold">Update Your Password :</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
+                            <label for="password" class="form-label text-dark fw-semibold">Update your password:</label>
+                            <input type="password" class="form-control form-control-lg shadow-sm @error('password') is-invalid @enderror" id="password" name="password" placeholder="Leave blank to keep current password">
                             @error('password')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <!-- Confirmar Contraseña -->
                         <div class="mb-4">
-                            <label for="password_confirmation" class="form-label fw-bold">Update Your Password:</label>
-                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                            <label for="password_confirmation" class="form-label text-dark fw-semibold">Confirm Your New Password</label>
+                            <input type="password" class="form-control form-control-lg shadow-sm" id="password_confirmation" name="password_confirmation">
                         </div>
 
-                        <!-- Botón de Enviar -->
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary btn-lg" style="max-width: 200px; margin: 0 auto;">
-                                Update
-                            </button>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-dark btn-lg shadow">Update Profile</button>
                         </div>
                     </form>
                 </div>

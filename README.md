@@ -1,66 +1,109 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# User Management Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Descripción
 
-## About Laravel
+Esta aplicación permite a los administradores gestionar usuarios de manera eficiente. Los administradores pueden crear, editar, eliminar y verificar usuarios. La aplicación está diseñada para proporcionar una interfaz de usuario profesional y fácil de usar.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Funcionalidades
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Dashboard de SuperAdmin**: Un panel de control para el SuperAdmin donde puede gestionar todos los usuarios.
+- **Dashboard de Admin**: Un panel de control para los administradores donde pueden gestionar los usuarios.
+- **Gestión de Usuarios**: Crear, editar, eliminar y verificar usuarios.
+- **Roles de Usuario**: Asignar roles a los usuarios (SuperAdmin, Admin, User).
+- **Verificación de Email**: Verificar y desverificar el email de los usuarios.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Imágenes
 
-## Learning Laravel
+### 1. Login
+![Login Dashboard](resources/imgUserApp/1.png)
+Aquí podemos ver el formulario de login del programa.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 2. Register
+![Register Dashboard](resources/imgUserApp/2.png)
+Aquí podemos ver el formulario de register del programa.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 3. Reset
+![Reset Dashboard](resources/imgUserApp/3.png)
+Aquí podemos ver el formulario de resetear contraseña del programa.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 4. Logged in
+![Logged Dashboard](resources/imgUserApp/4.png)
+Aquí podemos ver el dashboard de cuando hacemos login.
 
-## Laravel Sponsors
+### 5. Super Admin Dashboard
+![SuperAdmin Dashboard](resources/imgUserApp/5.png)
+Aquí podemos ver el dashboard del super admin en el programa.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 6. Editar Usuario
+![Editar Usuario](resources/imgUserApp/6.png)
+Aqui podemos editar al usuario.
 
-### Premium Partners
+### 7. Eliminar Usuario
+![Eliminar Usuario](resources/imgUserApp/7.png)
+Aqui podemos eliminar un usuario, y nos salta el mensaje de aviso.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 8. Verificar Usuario
+![Verificar Usuario](resources/imgUserApp/8.png)
+Aqui podemos verificar un usuario, y nos salta el mensaje de aviso.
 
-## Contributing
+### 9. Admin Dashboard
+![Admin Dashboard](resources/imgUserApp/9.png)
+Aquí podemos ver el dashboard del admin en el programa.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 10. Crear Usuario
+![Crear Usuario](resources/imgUserApp/10.png)
+Aqui podemos crear un nuevo usuario.
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+## Instalación
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Clona el repositorio:
+    ```sh
+    git clone https://github.com/Jferrui0803/firstUserApp.git
+    ```
 
-## License
+2. Instala las dependencias:
+    ```sh
+    composer install
+    npm install
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+3. Configura el archivo [.env](http://_vscodecontentref_/2):
+    ```sh
+    cp .env.example .env
+    php artisan key:generate
+    ```
+
+4. Ejecuta las migraciones:
+    ```sh
+    php artisan migrate
+    ```
+
+5. Inicia el servidor:
+    ```sh
+    php artisan serve
+    npm run dev
+    ```
+
+## Uso
+
+1. Accede a la aplicación en tu navegador:
+   
+2. Inicia sesión con tus credenciales de SuperAdmin o Admin.
+
+3. Utiliza el panel de control para gestionar los usuarios.
+
+## Contribución
+
+Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
+
+1. Haz un fork del repositorio.
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza tus cambios y haz commit (`git commit -am 'Añadir nueva funcionalidad'`).
+4. Sube tus cambios (`git push origin feature/nueva-funcionalidad`).
+5. Abre un Pull Request.
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.

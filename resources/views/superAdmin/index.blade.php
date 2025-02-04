@@ -1,41 +1,47 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-light container mx-auto p-4">
-    <h1 class="text-3xl font-bold mb-4 text-center">SuperAdmin Dashboard</h1>
+<div class="container py-5">
+    <div class="card shadow-lg p-4 bg-white border-0">
+        <h1 class="text-center text-dark fw-bold">SuperAdmin Dashboard</h1>
 
-    <!-- Botón para abrir la modal de crear usuario -->
-    <button class="btn btn-info mb-4" data-bs-toggle="modal" data-bs-target="#createUserModal">
-        Add New User
-    </button>
-
-    <!-- Incluir las modales -->
-    @include('modal.create')
-    @include('modal.edit', ['user' => $users])
-
-    <!-- Lista de Usuarios -->
-    <div class="bg-white shadow-lg rounded-lg p-4">
-        <h2 class="text-2xl font-semibold mb-4 text-center">Registered Users</h2>
-
-        <table class="table table-bordered table-hover">
-            <thead class="thead-dark">
-                <tr>
-                    <th class="text-center">ID</th>
-                    <th class="text-center">Name</th>
-                    <th class="text-center">Email</th>
-                    <th class="text-center">Verified</th>
-                    <th class="text-center">Role</th>
-                    <th class="text-center">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($users as $user)
-                <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->email_verified_at ? 'YES ✅' : 'NO ❌' }}</td>
-                    <td>{{ $user->role }}</td>
+        <div class="card-body bg-white px-4 py-5">
+            <!-- Botón para abrir la modal de crear usuario -->
+            <div class="d-flex justify-content-end mb-3">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createUserModal">
+                    <i class="fas fa-user-plus"></i> Add New User
+                </button>
+            </div>
+            
+            <!-- Incluir las modales -->
+            @include('modal.create')
+            @include('modal.edit', ['user' => $users])
+            
+            <div class="card border-0 shadow-sm bg-light">
+                <div class="card-header bg-dark text-white text-center">
+                    <h2 class="mb-0">Registered Users</h2>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped align-middle text-center">
+                            <thead class="bg-secondary text-white">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Verified</th>
+                                    <th>Role</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $user)
+                                <tr>
+                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{!! $user->email_verified_at ? '<span class="badge bg-success">YES ✅</span>' : '<span class="badge bg-danger">NO ❌</span>' !!}</td>
+                                    <td>{{ ucfirst($user->role) }}</td>
                     <td class="text-center">
                         <div class="d-flex justify-content-center gap-2">
 
@@ -55,19 +61,19 @@
                             <!-- Botón para Eliminar -->
                             @if ($user->role !== 'superAdmin')
                             <button onclick="deleteUser('{{ $user->id }}')" class="btn btn-danger">
-                                Eliminar
+                                Delete
                             </button>
                             @endif
 
                             @if (!$user->email_verified_at)
                             <button onclick="verifyUser('{{ $user->id }}')" class="btn btn-success">
-                                Verificar
+                                Verify
                             </button>
                             @endif
 
                             @if ($user->email_verified_at && $user->role !== 'superAdmin')
                             <button onclick="desVerifyUser('{{ $user->id }}')" class="btn btn-dark">
-                                Desverificar
+                                Unverify
                             </button>
                             @endif
                         </div>
@@ -77,10 +83,6 @@
             </tbody>
         </table>
 
-        <!-- Paginación -->
-        <div class="mt-4">
-            {{ $users->links() }}
-        </div>
     </div>
 </div>
 
